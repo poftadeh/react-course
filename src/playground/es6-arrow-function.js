@@ -12,7 +12,6 @@
 
 // console.log(squareArrow(4));
 
-
 // Challenge - Use arrow functions
 // getFirstName('Mike Smith') -> "Mike"
 // Create regular arrow function
