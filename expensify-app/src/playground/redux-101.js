@@ -1,5 +1,23 @@
 import { createStore } from 'redux';
 
+const incrementCount = ({ incrementBy = 1 } = {}) => ({
+  type: 'INCREMENT',
+  incrementBy,
+});
+
+const decrementCount = ({ decrementBy = 1 } = {}) => ({
+  type: 'DECREMENT',
+  decrementBy,
+});
+
+const setCount = ({ setBy = 1 } = {}) => ({ type: 'SET', setBy });
+
+// const resetCount = () => {
+//   return { type: 'RESET' };
+// };
+
+console.log('foo');
+
 const store = createStore((state = { count: 0 }, action) => {
   console.log('running');
   const incrementBy =
@@ -32,12 +50,12 @@ const unsubscribe = store.subscribe(() => {
   console.log('TCL: store.getState()', store.getState());
 });
 
-store.dispatch({
-  type: 'INCREMENT',
-  incrementBy: 5,
-});
+// store.dispatch({
+//   type: 'INCREMENT',
+//   incrementBy: 5,
+// });
 
-unsubscribe();
+store.dispatch(incrementCount({ incrementBy: 5 }));
 
 store.dispatch({
   type: 'INCREMENT',
@@ -47,12 +65,14 @@ store.dispatch({
   type: 'RESET',
 });
 
-store.dispatch({
-  type: 'DECREMENT',
-  decrementBy: 10,
-});
+store.dispatch(decrementCount());
 
-store.dispatch({
-  type: 'SET',
-  count: 101,
-});
+store.dispatch(
+  decrementCount({
+    decrementBy: 10,
+  }),
+);
+
+store.dispatch(setCount({ setBy: 5 }));
+
+unsubscribe();
