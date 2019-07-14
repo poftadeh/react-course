@@ -70,8 +70,6 @@ const expenseOne = store.dispatch(
 
 store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
-console.log('getState()', store.getState());
-
 // const demoState = {
 //   expenses: [
 //     {
